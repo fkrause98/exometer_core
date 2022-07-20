@@ -48,7 +48,7 @@
 -export([monitor/2, monitor/3, demonitor/1]).
 
 -compile({no_auto_import, [monitor/3]}).
--include_lib("hut/include/hut.hrl").
+-include_lib("riax_hut/include/hut.hrl").
 -include("exometer.hrl").
 
 -record(st, {}).

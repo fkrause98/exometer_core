@@ -37,7 +37,7 @@
 -record(st, {mon = orddict:new()}).
 
 -include_lib("parse_trans/include/codegen.hrl").
--include_lib("hut/include/hut.hrl").
+-include_lib("riax_hut/include/hut.hrl").
 -include("exometer.hrl").
 
 -type type() :: exometer:type().

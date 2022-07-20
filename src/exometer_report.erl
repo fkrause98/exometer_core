@@ -213,7 +213,7 @@
 
 -export_type([metric/0, datapoint/0, interval/0, extra/0]).
 
--include_lib("hut/include/hut.hrl").
+-include_lib("riax_hut/include/hut.hrl").
 -include("exometer.hrl").
 
 -define(SERVER, ?MODULE).
@@ -576,9 +576,9 @@ disable_reporter(Reporter) ->
 disable_me(Mod, St) ->
     cast({disable, self()}),
     receive
-        {exometer_terminate, shutdown} ->
-            Mod:exometer_terminate(shutdown, St),
-            exit(shutdown)
+        {exometer_terminate, sriax_hutdown} ->
+            Mod:exometer_terminate(sriax_hutdown, St),
+            exit(sriax_hutdown)
     end.
 
 -spec call_reporter(reporter_name(), any()) -> any() | {error, any()}.
@@ -1493,7 +1493,7 @@ maybe_register(R, Pid, Opts) ->
     end.
 
 terminate_reporter(#reporter{pid = Pid, mref = MRef}) when is_pid(Pid) ->
-    Pid ! {exometer_terminate, shutdown},
+    Pid ! {exometer_terminate, sriax_hutdown},
     receive
         {'DOWN', MRef, _, _, _} ->
             ok

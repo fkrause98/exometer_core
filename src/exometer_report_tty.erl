@@ -40,7 +40,7 @@
     exometer_terminate/2
    ]).
 
--include_lib("hut/include/hut.hrl").
+-include_lib("riax_hut/include/hut.hrl").
 -include("exometer.hrl").
 
 -define(SERVER, ?MODULE).
